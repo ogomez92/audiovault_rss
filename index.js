@@ -89,6 +89,7 @@ const removeEntriesPresentInJSON = async (movies, shows) => {
         })
     })
 
+
     fs.writeFileSync(JSON_FILE, JSON.stringify({
         movies: [...json.movies, ...newMovies],
         shows: [...json.shows, ...newShows],
@@ -101,6 +102,12 @@ const removeEntriesPresentInJSON = async (movies, shows) => {
 }
 
 const generateRSS = async (movies, shows) => {
+
+    // Guard: If movies and shows == 0 do not regenerate rss.
+    if (movies.length == 0 && shows.length == 0) {
+        console.log('Nothing to do.');
+        return;
+    }
     const dotenv = require('dotenv').config();
 
     const RSS_FILE_PATH = process.env.RSS_FILE_PATH || 'audiovault_feed.rss';
