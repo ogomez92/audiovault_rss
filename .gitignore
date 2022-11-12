@@ -1,4 +1,4 @@
 .env
-*.json
+audiovault_entries.json
 node_modules
 *.rss
