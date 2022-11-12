@@ -103,7 +103,7 @@ const removeEntriesPresentInJSON = async (movies, shows) => {
 const generateRSS = async (movies, shows) => {
     const dotenv = require('dotenv').config();
 
-    const RSS_FILE_PATH = dotenv.RSS_FILE_PATH;
+    const RSS_FILE_PATH = process.env.RSS_FILE_PATH || 'audiovault_feed.rss';
 
     const fs = require('fs');
 
